@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::V1::UsersController < ApplicationController
 
     skip_before_action :require_login, only: [:create]
 
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
             token = encode_token(payload)
             render json: {user: user, jwt: token}
         else
-            render json: {errors: user.errors.full_messages}, status :not_acceptable
+            render json: {errors: user.errors.full_messages}, status: :not_acceptable
         end
     end
 

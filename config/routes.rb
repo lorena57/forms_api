@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-resource :user, only: [:create]
+  namespace :api do 
 
-post '/login', to: 'auth#login'
+    namespace :v1 do
 
-get '/auto_login', to: 'auth#auto_login'
+      # resource :user, only: [:create]
 
-get '/user_is_auth', to: 'auth#user_is_authed'
+      resource :user
 
+      post '/login', to: 'auth#login'
+
+      get '/auto_login', to: 'auth#auto_login'
+
+      get '/user_is_auth', to: 'auth#user_is_authed'
+
+    end
+  end
 end
