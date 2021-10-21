@@ -1,6 +1,11 @@
 class Api::V1::UsersController < ApplicationController
 
-    skip_before_action :require_login, only: [:create]
+    # skip_before_action :require_login, only: [:create,]
+
+    def index
+        @users = User.all
+        render json: @users
+    end
 
     def create
         user = User.create(user_params)

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
     namespace :v1 do
 
-      resource :user, only: [:create]
+      resources :users, only: [:create, :index]
 
       # resource :user
 
